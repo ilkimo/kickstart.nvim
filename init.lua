@@ -516,3 +516,41 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+
+-- Colemak remappings
+-- Remove default movement mappings
+vim.api.nvim_set_keymap('n', 'h', '', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'j', '', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'k', '', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'l', '', { noremap = true, silent = true })
+
+-- Remap h, j, k, l to m, n, e, i in normal mode
+vim.api.nvim_set_keymap('n', 'm', 'h', { noremap = true })
+vim.api.nvim_set_keymap('n', 'n', 'j', { noremap = true })
+vim.api.nvim_set_keymap('n', 'e', 'k', { noremap = true })
+vim.api.nvim_set_keymap('n', 'i', 'l', { noremap = true })
+
+-- Remove insert mode mappings
+vim.api.nvim_set_keymap('i', '<C-h>', '', { noremap = true })
+vim.api.nvim_set_keymap('i', '<C-j>', '', { noremap = true })
+vim.api.nvim_set_keymap('i', '<C-k>', '', { noremap = true })
+vim.api.nvim_set_keymap('i', '<C-l>', '', { noremap = true })
+
+-- Remap insert mode movement shortcuts
+vim.api.nvim_set_keymap('i', '<C-n>', '<C-h>', { noremap = true })
+vim.api.nvim_set_keymap('i', '<C-m>', '<C-j>', { noremap = true })
+vim.api.nvim_set_keymap('i', '<C-e>', '<C-k>', { noremap = true })
+vim.api.nvim_set_keymap('i', '<C-i>', '<C-l>', { noremap = true })
+
+-- Remove default mappings for 'u', 'i', 'o', and 'e'
+vim.api.nvim_set_keymap('n', 'u', '', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'i', '', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'o', '', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'e', '', { noremap = true, silent = true })
+
+-- Remap 'u', 'i', 'o', and 'e' to 'l', 'u', 'y', and 'f' in normal mode
+vim.api.nvim_set_keymap('n', 'u', 'l', { noremap = true })
+vim.api.nvim_set_keymap('n', 'i', 'u', { noremap = true })
+vim.api.nvim_set_keymap('n', 'o', 'y', { noremap = true })
+vim.api.nvim_set_keymap('n', 'e', 'f', { noremap = true })
