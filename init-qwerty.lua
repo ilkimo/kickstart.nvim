@@ -200,6 +200,7 @@ require('lazy').setup({
   require 'custom.plugins.filetree',
   require 'custom.plugins.autopairs',
   require 'custom.plugins.colorizer',
+  require 'custom.plugins.markdown-preview',
   require 'custom.plugins.transparent-nvim',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
