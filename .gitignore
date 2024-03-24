@@ -2,6 +2,8 @@ tags
 test.sh
 .luarc.json
 nvim
+
+spell/
 lazy-lock.json
 
 # Kimo add (init.lua is a symlink that points to the correct
