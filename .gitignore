@@ -6,6 +6,3 @@ nvim
 spell/
 lazy-lock.json
 
-# Kimo add (init.lua is a symlink that points to the correct
-# keyboard layout init-LAYOUT.lua file)
-init.lua
