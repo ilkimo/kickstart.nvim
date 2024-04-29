@@ -90,7 +90,11 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- BEGIN Kimo Add
+vim.opt.termguicolors = true
 vim.opt.scrolloff = 12
+-- END Kimo Add
+
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = false
 
@@ -190,6 +194,23 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+-- BEGIN Kimo shortcuts
+-- yaml plugin shortcuts
+vim.keymap.set('n', '<leader>yv', '<cmd>YAMLView<CR>', { desc = 'View YAML structure' })
+vim.keymap.set('n', '<leader>ya', function()
+  vim.cmd 'YAMLYank +'
+  print 'Yankzzzz ALL'
+  vim.cmd 'set cursorline'
+  vim.defer_fn(function()
+    vim.cmd 'set nocursorline'
+  end, 1000) -- Highlight for 1 second
+end, { desc = 'Yank full path and value on the "+" register and echo message, highlight line' })
+vim.keymap.set('n', '<leader>yk', function()
+  vim.cmd 'YAMLYankKey +'
+  print 'Yankzzzz KEY'
+end, { desc = 'Yank full path of key for current key/value pair' })
+-- END Kimo shortcuts
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -296,11 +317,13 @@ require('lazy').setup({
     end,
   },
 
-  -- Kimo add
+  -- BEGIN Kimo add
   require 'custom.plugins.autopairs',
   require 'custom.plugins.colorizer',
   require 'custom.plugins.filetree',
   require 'custom.plugins.transparent-nvim',
+  require 'custom.plugins.yaml',
+  -- END Kimo add
 
   -- NOTE: Plugins can specify dependencies.
   --
@@ -803,7 +826,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'yaml' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
