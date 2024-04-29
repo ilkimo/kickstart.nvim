@@ -201,11 +201,7 @@ vim.keymap.set('n', '<leader>yv', '<cmd>YAMLView<CR>', { desc = 'View YAML struc
 vim.keymap.set('n', '<leader>ya', function()
   vim.cmd 'YAMLYank +'
   print 'Yankzzzz ALL'
-  vim.cmd 'set cursorline'
-  vim.defer_fn(function()
-    vim.cmd 'set nocursorline'
-  end, 1000) -- Highlight for 1 second
-end, { desc = 'Yank full path and value on the "+" register and echo message, highlight line' })
+end, { desc = 'Yank full path and value' })
 vim.keymap.set('n', '<leader>yk', function()
   vim.cmd 'YAMLYankKey +'
   print 'Yankzzzz KEY'
