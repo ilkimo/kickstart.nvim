@@ -209,10 +209,9 @@ end, { desc = 'Yank full path of key for current key/value pair' })
 -- TransparentToggle plugin shortcuts
 vim.keymap.set('n', '<leader>tt', '<cmd>TransparentToggle<CR>', { desc = 'TransparentToggle' })
 -- Neotree plugin shortcuts
-vim.keymap.set('n', '<leader>ns', '<cmd>Neotree show<CR>', { desc = 'Neotree show' })
-vim.keymap.set('n', '<leader>no', '<cmd>Neotree show<CR>', { desc = 'Neotree open (alias for show)' })
-vim.keymap.set('n', '<leader>nc', '<cmd>Neotree close<CR>', { desc = 'Neotree close' })
+vim.keymap.set('n', '<leader>nt', '<cmd>Neotree toggle<CR>', { desc = 'Neotree toggle' })
 vim.keymap.set('n', '<leader>nf', '<cmd>Neotree focus<CR>', { desc = 'Neotree focus' })
+vim.keymap.set('n', '<leader>nb', '<cmd>Neotree buffers<CR>', { desc = 'Neotree buffers' })
 -- END Kimo shortcuts
 
 -- [[ Basic Autocommands ]]
