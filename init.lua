@@ -206,6 +206,13 @@ vim.keymap.set('n', '<leader>yk', function()
   vim.cmd 'YAMLYankKey +'
   print 'Yankzzzz KEY'
 end, { desc = 'Yank full path of key for current key/value pair' })
+-- TransparentToggle plugin shortcuts
+vim.keymap.set('n', '<leader>tt', '<cmd>TransparentToggle<CR>', { desc = 'TransparentToggle' })
+-- Neotree plugin shortcuts
+vim.keymap.set('n', '<leader>ns', '<cmd>Neotree show<CR>', { desc = 'Neotree show' })
+vim.keymap.set('n', '<leader>no', '<cmd>Neotree show<CR>', { desc = 'Neotree open (alias for show)' })
+vim.keymap.set('n', '<leader>nc', '<cmd>Neotree close<CR>', { desc = 'Neotree close' })
+vim.keymap.set('n', '<leader>nf', '<cmd>Neotree focus<CR>', { desc = 'Neotree focus' })
 -- END Kimo shortcuts
 
 -- [[ Basic Autocommands ]]
@@ -309,11 +316,16 @@ require('lazy').setup({
         ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+        -- Kimo key chains BEGIN
+        ['<leader>t'] = { name = '[T]ransparentToggle', _ = 'which_key_ignore' },
+        ['<leader>n'] = { name = '[N]eotree', _ = 'which_key_ignore' },
+        ['<leader>y'] = { name = '[Y]AML', _ = 'which_key_ignore' },
+        -- Kimo key chains END
       }
     end,
   },
 
-  -- BEGIN Kimo add
+  -- BEGIN Kimo add plugins
   require 'custom.plugins.autopairs',
   require 'custom.plugins.colorizer',
   require 'custom.plugins.filetree',
