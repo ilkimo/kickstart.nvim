@@ -331,6 +331,7 @@ require('lazy').setup({
   require 'custom.plugins.transparent-nvim',
   require 'custom.plugins.yaml',
   require 'custom.plugins.fugitive',
+  require 'custom.plugins.csv',
   -- END Kimo add
 
   -- NOTE: Plugins can specify dependencies.
