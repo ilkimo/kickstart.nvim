@@ -322,6 +322,7 @@ require('lazy').setup({
         ['<leader>t'] = { name = '[T]ransparentToggle', _ = 'which_key_ignore' },
         ['<leader>n'] = { name = '[N]eotree', _ = 'which_key_ignore' },
         ['<leader>y'] = { name = '[Y]AML', _ = 'which_key_ignore' },
+        ['<leader>k'] = { name = '[K]ubernetes', _ = 'which_key_ignore' },
         -- Kimo key chains END
       }
     end,
@@ -419,7 +420,18 @@ require('lazy').setup({
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
           winblend = 10,
-          previewer = false,
+          previewer = true,
+          layout_strategy = 'vertical',
+          layout_config = {
+            vertical = {
+              prompt_position = 'top', -- Position the prompt at the top
+              preview_height = 0.4, -- Set the preview height to 30% of the window
+              mirror = false, -- Optional: set to true to mirror the layout vertically
+            },
+            width = 0.8, -- Overall width of the Telescope window (80% of the screen width)
+            height = 0.95, -- Overall height of the Telescope window (95% of the screen height)
+            preview_cutoff = 0, -- Always show previewer, as it fits within the height limits
+          },
         })
       end, { desc = '[/] Fuzzily search in current buffer' })
 
@@ -609,7 +621,18 @@ require('lazy').setup({
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
         --
-
+        yamlls = {
+          settings = {
+            yaml = {
+              -- other settings. note this overrides the lspconfig defaults.
+              schemas = {
+                [require('kubernetes').yamlls_schema()] = '*.yaml',
+                -- or this to only match '*.<resource>.yaml' files. ex: 'app.deployment.yaml', 'app.argocd.yaml', ...
+                --[require('kubernetes').yamlls_schema()] = require('kubernetes').yamlls_filetypes(),
+              },
+            },
+          },
+        },
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -633,6 +656,9 @@ require('lazy').setup({
       --
       --  You can press `g?` for help in this menu.
       require('mason').setup()
+      require('mason-lspconfig').setup {
+        ensure_installed = { 'yamlls' },
+      }
 
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
