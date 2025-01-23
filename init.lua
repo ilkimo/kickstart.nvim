@@ -212,6 +212,9 @@ vim.keymap.set('n', '<leader>tt', '<cmd>TransparentToggle<CR>', { desc = 'Transp
 vim.keymap.set('n', '<leader>nt', '<cmd>Neotree toggle<CR>', { desc = 'Neotree toggle' })
 vim.keymap.set('n', '<leader>nf', '<cmd>Neotree focus<CR>', { desc = 'Neotree focus' })
 vim.keymap.set('n', '<leader>nb', '<cmd>Neotree buffers<CR>', { desc = 'Neotree buffers' })
+-- Markview shortcuts
+vim.keymap.set('n', '<leader>ms', '<cmd>Markview splitToggle<CR>', { desc = 'Markview Split' })
+vim.keymap.set('n', '<leader>mt', '<cmd>Markview toggleAll<CR>', { desc = 'Markview Toggle' })
 -- END Kimo shortcuts
 
 -- [[ Basic Autocommands ]]
