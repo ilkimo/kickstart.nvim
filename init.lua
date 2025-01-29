@@ -324,6 +324,7 @@ require('lazy').setup({
         -- Kimo key chains BEGIN
         ['<leader>t'] = { name = '[T]ransparentToggle', _ = 'which_key_ignore' },
         ['<leader>m'] = { name = '[M]arkview', _ = 'which_key_ignore' },
+        ['<leader>h'] = { name = '[H]arpoon', _ = 'which_key_ignore' },
         ['<leader>n'] = { name = '[N]eotree', _ = 'which_key_ignore' },
         ['<leader>y'] = { name = '[Y]AML', _ = 'which_key_ignore' },
         ['<leader>k'] = { name = '[K]ubernetes', _ = 'which_key_ignore' },
