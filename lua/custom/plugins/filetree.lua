@@ -16,7 +16,6 @@ return {
       enable_git_status = true,
       enable_diagnostics = true,
       use_libuv_file_watcher = true,
-      enable_normal_mode_for_inputs = false, -- Enable normal mode for input dialogs.
       open_files_do_not_replace_types = { 'trouble', 'qf' }, -- when opening files, do not use windows containing these filetypes or buftypes... 'terminal' was one of the options
       sort_case_insensitive = false,
       default_component_configs = {
