@@ -1,12 +1,37 @@
 return {
-  'ThePrimeagen/harpoon',
-  branch = 'harpoon2',
-  dependencies = { 'nvim-lua/plenary.nvim' },
+  'ilkimo/harpoon',
+  branch = 'hotfix/kimo_remove',
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    'nvim-telescope/telescope.nvim',
+  },
   config = function()
     require('harpoon').setup {}
+
+    -- Telescope configuration begin
+    local conf = require('telescope.config').values
+    local function toggle_telescope(harpoon_files)
+      local file_paths = {}
+      for _, item in ipairs(harpoon_files.items) do
+        table.insert(file_paths, item.value)
+      end
+
+      require('telescope.pickers')
+        .new({}, {
+          prompt_title = 'Harpoon',
+          finder = require('telescope.finders').new_table {
+            results = file_paths,
+          },
+          previewer = conf.file_previewer {},
+          sorter = conf.generic_sorter {},
+        })
+        :find()
+    end
+
     vim.keymap.set('n', '<C-l>', function()
-      require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())
-    end, { noremap = true, silent = true, desc = 'Harpoon quick menu' })
+      toggle_telescope(require('harpoon'):list())
+    end, { desc = 'Harpoon quick menu' })
+    -- Telescope configuration end
 
     vim.keymap.set('n', '<leader>ht', function()
       require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())
@@ -15,6 +40,14 @@ return {
     vim.keymap.set('n', '<leader>ha', function()
       require('harpoon'):list():add()
     end, { noremap = true, silent = true, desc = 'Harpoon add buffer to list' })
+
+    vim.keymap.set('n', '<leader>hr', function()
+      require('harpoon'):list():remove()
+    end, { noremap = true, silent = true, desc = 'Harpoon remove buffer from list' })
+
+    vim.keymap.set('n', '<leader>hc', function()
+      require('harpoon'):list():clear()
+    end, { noremap = true, silent = true, desc = 'Harpoon clear buffer list' })
 
     vim.keymap.set('n', '<leader>hh', function()
       require('harpoon'):list():select(1)
