@@ -211,9 +211,6 @@ vim.keymap.set('n', '<leader>tt', '<cmd>TransparentToggle<CR>', { desc = 'Transp
 vim.keymap.set('n', '<leader>nt', '<cmd>Neotree toggle<CR>', { desc = 'Neotree toggle' })
 vim.keymap.set('n', '<leader>nf', '<cmd>Neotree focus<CR>', { desc = 'Neotree focus' })
 vim.keymap.set('n', '<leader>nb', '<cmd>Neotree buffers<CR>', { desc = 'Neotree buffers' })
--- Markview shortcuts
-vim.keymap.set('n', '<leader>ms', '<cmd>Markview splitToggle<CR>', { desc = 'Markview Split' })
-vim.keymap.set('n', '<leader>mt', '<cmd>Markview toggleAll<CR>', { desc = 'Markview Toggle' })
 -- END Kimo shortcuts
 
 -- [[ Basic Autocommands ]]
@@ -355,12 +352,13 @@ require('lazy').setup({
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         -- Kimo key chains BEGIN
-        ['<leader>t'] = { name = '[T]ransparentToggle', _ = 'which_key_ignore' },
-        ['<leader>m'] = { name = '[M]arkview', _ = 'which_key_ignore' },
-        ['<leader>h'] = { name = '[H]arpoon', _ = 'which_key_ignore' },
-        ['<leader>n'] = { name = '[N]eotree', _ = 'which_key_ignore' },
-        ['<leader>y'] = { name = '[Y]AML', _ = 'which_key_ignore' },
-        ['<leader>k'] = { name = '[K]ubernetes', _ = 'which_key_ignore' },
+        { '<leader>t', group = '[T]ransparentToggle' },
+        { '<leader>m', group = '[M]arkview' },
+        { '<leader>h', group = '[H]arpoon' },
+        { '<leader>hs', group = '[H]arpoon [S]wap buffers' },
+        { '<leader>n', group = '[N]eotree' },
+        { '<leader>y', group = '[Y]AML' },
+        { '<leader>k', group = '[K]ubernetes' },
         -- Kimo key chains END
       },
     },
