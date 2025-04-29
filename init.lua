@@ -195,22 +195,14 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- BEGIN Kimo shortcuts
--- yaml plugin shortcuts
-vim.keymap.set('n', '<leader>yv', '<cmd>YAMLView<CR>', { desc = 'View YAML structure' })
-vim.keymap.set('n', '<leader>ya', function()
-  vim.cmd 'YAMLYank +'
-  print 'Yankzzzz ALL'
-end, { desc = 'Yank full path and value' })
-vim.keymap.set('n', '<leader>yk', function()
-  vim.cmd 'YAMLYankKey +'
-  print 'Yankzzzz KEY'
-end, { desc = 'Yank full path of key for current key/value pair' })
--- TransparentToggle plugin shortcuts
-vim.keymap.set('n', '<leader>tt', '<cmd>TransparentToggle<CR>', { desc = 'TransparentToggle' })
 -- Neotree plugin shortcuts
 vim.keymap.set('n', '<leader>nt', '<cmd>Neotree toggle<CR>', { desc = 'Neotree toggle' })
 vim.keymap.set('n', '<leader>nf', '<cmd>Neotree focus<CR>', { desc = 'Neotree focus' })
 vim.keymap.set('n', '<leader>nb', '<cmd>Neotree buffers<CR>', { desc = 'Neotree buffers' })
+-- vimdiff shortcuts
+vim.keymap.set('n', '<leader>gtu', '<cmd>diffget //2<CR>', { desc = '[G]et "ours" (left) - for merges' })
+vim.keymap.set('n', '<leader>gtd', '<cmd>diffget //3<CR>', { desc = '[G]et "theirs" (right) - for merges' })
+vim.keymap.set('n', '<leader>dp', '<cmd>diffput<CR>', { desc = '[D]iff [P]ut' })
 -- END Kimo shortcuts
 
 -- [[ Basic Autocommands ]]
@@ -352,6 +344,7 @@ require('lazy').setup({
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         -- Kimo key chains BEGIN
+        { '<leader>a', group = '[A]I (copilot)' },
         { '<leader>t', group = '[T]ransparentToggle' },
         { '<leader>m', group = '[M]arkview' },
         { '<leader>h', group = '[H]arpoon' },
@@ -666,6 +659,7 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
+        bashls = {},
         kotlin_language_server = {},
         -- gopls = {},
         -- pyright = {},
